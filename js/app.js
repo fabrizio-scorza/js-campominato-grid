@@ -1,3 +1,6 @@
+// dichiarare una variabile associata all'elemento root
+const r = document.querySelector(':root');
+
 // ascoltare il click sul bottone inizia
     // associare il bottone ad una variabile per poter interagire con lui
     const startButton = document.getElementById('start-btn'); //object
@@ -13,16 +16,20 @@
         //ascoltare il click sul select che sceglie la difficoltà e associarne il valore ad una variabile
         const difficultySelection = document.getElementById('difficulty') //object
         const difficulty = difficultySelection.value;
-        console.log (difficulty)
+        
+       
 
-        //controllare la difficoltà
+        //controllare la difficoltà per stabilire il lato del quadrato
             if (difficulty == 1){
                 gridSide = 10; //number
             } else if (difficulty == 2){
                 gridSide = 9; //number
             } else {
-                gridSide = 7; //number
+                gridSide = 7; //number               
             }
+
+        //invocare la variabile che cambia il valore di side nel css
+        setSide(gridSide);
 
         //invocare la funzione che genera il campo
          createField(gridSide);
@@ -63,9 +70,6 @@ function createField(side){
     }
 }
 
-function setDifficulty (value){
-
-
-
-    
+function setSide (value){
+    r.style.setProperty('--side', value);
 }
