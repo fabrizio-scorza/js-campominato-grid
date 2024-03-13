@@ -47,8 +47,7 @@
 }
 
 .cell.clicked{
-    background: radial-gradient(circle, rgba(20,28,122,1) 0%, rgba(41,255,253,1) 20%, rgba(255,255,255,1) 40%, rgba(41,255,253,1) 50%, rgba(255,255,255,1) 60%, rgba(41,255,253,1) 80%, rgba(20,28,122,1) 100%);
-    color: white;
+    background:radial-gradient(circle, rgba(41,255,253,1) 0%, rgba(255,255,255,1) 22%, rgba(20,28,122,1) 100%);
 }
 
 #start-btn, #difficulty{
