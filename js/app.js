@@ -1,18 +1,37 @@
 // ascoltare il click sul bottone inizia
     // associare il bottone ad una variabile per poter interagire con lui
-    const startButton = document.getElementById('start-btn'); //object 
+    const startButton = document.getElementById('start-btn'); //object
+
+    // associare il wrapper ad una variabile per poter interagire con lui
+    const restartField = document.querySelector('.wrapper'); //object
+    
     // ascoltarne il click
     startButton.addEventListener('click', function (){
-        createField();
+        //azzerare il campo in caso fosse già stato cliccato il bottone
+        restartField.innerHTML ='';
+
+        //ascoltare il click sul select che sceglie la difficoltà e associarne il valore ad una variabile
+        const difficultySelection = document.getElementById('difficulty') //object
+        const difficulty = difficultySelection.value;
+        console.log (difficulty)
+
+        //controllare la difficoltà
+            if (difficulty == 1){
+                gridSide = 10; //number
+            } else if (difficulty == 2){
+                gridSide = 9; //number
+            } else {
+                gridSide = 7; //number
+            }
+
+        //invocare la funzione che genera il campo
+         createField(gridSide);
     })
 
 // generare il campo minato
-function createField(){
+function createField(side){
     // associare il wrapper ad una variabile per poter interagire con lui
     const field = document.querySelector('.wrapper'); //object
-
-    //dichiare una variabile con il numero di celle presenti in una riga
-    const side = 10; //number
 
     //dichiarare una variabile con il numero totale di elementi da creare nel DOM
     const area = side**2; //number
@@ -42,4 +61,11 @@ function createField(){
             console.log(`cliccata casella numero: ${num}`);
         })
     }
+}
+
+function setDifficulty (value){
+
+
+
+    
 }

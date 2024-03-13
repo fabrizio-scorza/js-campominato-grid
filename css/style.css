@@ -12,16 +12,22 @@
 /**LAYOUT***********************************************************/
 .container{
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
 }
 
 /**APP**************************************************************/
+.app{
+    background: linear-gradient(90deg, rgba(20,28,122,1) 0%, rgba(41,255,253,1) 20%, rgba(255,255,255,1) 40%, rgba(41,255,253,1) 50%, rgba(255,255,255,1) 60%, rgba(41,255,253,1) 80%, rgba(20,28,122,1) 100%);
+}
 .wrapper{
     max-height: 100%;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
+    background-image: url(./naruto-minato.webp);
+    background-position: center;
+    background-size: cover;
 
 }
 
@@ -32,8 +38,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color:red;
 
 }
 .cell.clicked{
-    background-color: blue;
+    background-color: rgba(81,219,206,1);
 }
