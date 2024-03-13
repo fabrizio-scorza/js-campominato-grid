@@ -28,11 +28,11 @@ const r = document.querySelector(':root');
                 gridSide = 7; //number               
             }
 
-        //invocare la variabile che cambia il valore di side nel css
+        //invocare la funzione che cambia il valore di side nel css
         setSide(gridSide);
 
         //invocare la funzione che genera il campo
-         createField(gridSide);
+        createField(gridSide);
     })
 
 // generare il campo minato
