@@ -1,0 +1,40 @@
+/**VAR************************************************************/
+:root{
+    --side:3;
+}
+/**RESET************************************************************/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**LAYOUT***********************************************************/
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/**APP**************************************************************/
+.app{
+    max-height: 100vh;
+}
+
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    aspect-ratio: 1 / 1;
+    border: 2px solid black;
+    width: calc(100% / var(--side));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.cell.clicked{
+    background-color: blue;
+}
