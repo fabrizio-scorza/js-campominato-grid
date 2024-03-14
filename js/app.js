@@ -1,6 +1,3 @@
-// dichiarare una variabile associata all'elemento root
-const r = document.querySelector(':root');
-
 // ascoltare il click sul bottone inizia
     // associare il bottone ad una variabile per poter interagire con lui
     const startButtonElement = document.getElementById('start-btn'); //object
@@ -8,7 +5,6 @@ const r = document.querySelector(':root');
     // associare il wrapper ad una variabile per poter interagire con lui
     const fieldElement = document.querySelector('.wrapper'); //object
     
-    // ascoltarne il click
     startButtonElement.addEventListener('click', startGame);
 
 //funzione che inizia il gioco
@@ -19,12 +15,11 @@ function startGame(){
     //assegnare alla variabile il risultato della funzione che definisce la dimensione in base al livello
     let gridSide = getSize (); //number
 
-    //invocare la funzione che cambia il valore di side nel css
-    setSide(gridSide);
-
     //invocare la funzione che genera il campo
     createField(gridSide);
 }
+
+
 
 //funzione che ritora il lato del campo in base alla difficoltà
 function getSize(){
@@ -44,13 +39,11 @@ function getSize(){
          return difficutlySide;
 }
 
-//funzione che modifica la variabile nel css
-function setSide (value){
-    r.style.setProperty('--side', value);
-}
-
 // funzione che genera il campo minato
 function createField(side){
+    //inserisco side nel css per calcolare la lunghezza della riga
+    fieldElement.style.setProperty('--side', side);
+    
     //dichiarare una variabile con il numero totale di elementi da creare nel DOM
     const area = side**2; //number
 
