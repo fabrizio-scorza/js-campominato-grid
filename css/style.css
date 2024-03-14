@@ -33,6 +33,7 @@
     background-image: url(./naruto-minato.webp);
     background-position: center;
     background-size: cover;
+    user-select: none;
 
 }
 
@@ -44,6 +45,7 @@
     justify-content: center;
     align-items: center;
     font-size: 22px;
+    cursor: pointer;
 }
 
 .cell.clicked{
@@ -60,6 +62,7 @@
     box-shadow: 2px 4px black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
+    cursor:pointer;
 }
 
 #difficulty:focus-visible{

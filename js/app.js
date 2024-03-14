@@ -3,43 +3,54 @@ const r = document.querySelector(':root');
 
 // ascoltare il click sul bottone inizia
     // associare il bottone ad una variabile per poter interagire con lui
-    const startButton = document.getElementById('start-btn'); //object
+    const startButtonElement = document.getElementById('start-btn'); //object
 
     // associare il wrapper ad una variabile per poter interagire con lui
-    const restartField = document.querySelector('.wrapper'); //object
+    const fieldElement = document.querySelector('.wrapper'); //object
     
     // ascoltarne il click
-    startButton.addEventListener('click', function (){
-        //azzerare il campo in caso fosse già stato cliccato il bottone
-        restartField.innerHTML ='';
+    startButtonElement.addEventListener('click', startGame);
 
-        //ascoltare il click sul select che sceglie la difficoltà e associarne il valore ad una variabile
-        const difficultySelection = document.getElementById('difficulty') //object
-        const difficulty = difficultySelection.value;
-        
-       
+//funzione che inizia il gioco
+function startGame(){
+    //azzerare il campo in caso fosse già stato cliccato il bottone
+    fieldElement.innerHTML ='';
 
-        //controllare la difficoltà per stabilire il lato del quadrato
-            if (difficulty == 1){
-                gridSide = 10; //number
-            } else if (difficulty == 2){
-                gridSide = 9; //number
-            } else {
-                gridSide = 7; //number               
-            }
+    //assegnare alla variabile il risultato della funzione che definisce la dimensione in base al livello
+    let gridSide = getSize (); //number
 
-        //invocare la funzione che cambia il valore di side nel css
-        setSide(gridSide);
+    //invocare la funzione che cambia il valore di side nel css
+    setSide(gridSide);
 
-        //invocare la funzione che genera il campo
-        createField(gridSide);
-    })
+    //invocare la funzione che genera il campo
+    createField(gridSide);
+}
 
-// generare il campo minato
+//funzione che ritora il lato del campo in base alla difficoltà
+function getSize(){
+     //ascoltare il click sul select che sceglie la difficoltà e associarne il valore ad una variabile
+     const difficultySelection = document.getElementById('difficulty') //object
+     const difficulty = difficultySelection.value;             
+
+     //controllare la difficoltà per stabilire il lato del quadrato
+        let difficutlySide = 10 //number 
+
+         if (difficulty === '3'){
+             difficutlySide = 7; //number
+         } else if (difficulty === '2'){
+             difficutlySide = 9; //number
+         }
+
+         return difficutlySide;
+}
+
+//funzione che modifica la variabile nel css
+function setSide (value){
+    r.style.setProperty('--side', value);
+}
+
+// funzione che genera il campo minato
 function createField(side){
-    // associare il wrapper ad una variabile per poter interagire con lui
-    const field = document.querySelector('.wrapper'); //object
-
     //dichiarare una variabile con il numero totale di elementi da creare nel DOM
     const area = side**2; //number
 
@@ -49,27 +60,25 @@ function createField(side){
         let num = i + 1; //numbre
         
         //creare l'oggetto da posizionare nel DOM e inserirlo in una variabile
-        const fieldElement = document.createElement('div'); // object
+        const cellElement = document.createElement('div'); // object
         
         //dichiarare la classe cell come classe dell'elemento appena creato
-        fieldElement.className = 'cell';
+        cellElement.className = 'cell';
 
         // inserire all'interno del codice html il numero della casella corrispondente 
-        fieldElement.innerHTML = num;
+        cellElement.innerHTML = num;
 
         //aggiungere l'elemento creato all'interno del campo
-        field.append(fieldElement);
+        fieldElement.append(cellElement);
 
         //ascoltare il click sulla casella 
-        fieldElement.addEventListener('click', function(){
+        cellElement.addEventListener('click', function(){
             // aggiungere o togliere la classe che ne colora il backgroud
-            fieldElement.classList.toggle('clicked');
+            cellElement.classList.toggle('clicked');
 
             console.log(`cliccata casella numero: ${num}`);
         })
     }
 }
 
-function setSide (value){
-    r.style.setProperty('--side', value);
-}
+
